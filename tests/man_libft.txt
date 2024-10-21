@@ -1,0 +1,210 @@
+Para executar a norminette em todos os arquivos, exceto aqueles 
+que começam com "test" e os arquivos .h, você pode ajustar o 
+comando find para também excluir os arquivos de cabeçalho .h.
+
+Aqui está o comando atualizado:
+
+norminette $(find . -type f ! -name "test*" ! -name "*.h")
+
+strlen
+
+A função strlen é usada em C para calcular o comprimento de uma string, 
+ou seja, o número de caracteres presentes na string até encontrar o caractere 
+nulo '\0', que indica o fim da string. Ela não conta o caractere nulo em 
+si, apenas os caracteres que vêm antes dele.
+
+Parâmetros: Recebe um ponteiro s para uma string (const char *).
+Valor de retorno: Retorna um valor do tipo size_t (um tipo de dado sem sinal), 
+que representa o número de caracteres na string, sem contar o '\0'.
+
+strlen é usada para contar quantos caracteres existem em uma string antes do '\0'.
+Ela é essencial para muitas operações com strings, como alocar memória para 
+cópias de strings (malloc), comparar strings (strcmp), e várias outras tarefas 
+de manipulação de texto em C.
+
+
+ft_isalpha
+
+A função ft_isalpha em C deve verificar se um caractere é uma letra 
+(ou seja, uma letra maiúscula de 'A' a 'Z' ou uma letra minúscula de 'a' a 'z').
+
+Parâmetro: A função recebe um int c, que representa um caractere em código ASCII.
+Verificação:
+A expressão (c >= 'A' && c <= 'Z') verifica se o caractere é uma letra maiúscula (entre 'A' e 'Z').
+A expressão (c >= 'a' && c <= 'z') verifica se o caractere é uma letra minúscula (entre 'a' e 'z').
+O || (ou lógico) garante que a função retornará 1 se c for qualquer letra, maiúscula ou minúscula.
+Retorno:
+Se c for uma letra, a função retorna 1.
+Caso contrário, retorna 0.
+
+Resumo:
+O que a ft_isalpha faz: Verifica se um caractere é uma letra (maiúscula ou minúscula).
+Como funciona: Verifica se o valor c está entre 'A' e 'Z' ou entre 'a' e 'z'.
+Retorno: Retorna 1 se for uma letra, 0 caso contrário.
+
+
+ft_isdigit
+
+A função ft_isdigit verifica se um determinado caractere é um dígito numérico (0-9). 
+Em C, isso significa que ela deve retornar 1 se o caractere for um número de '0' a '9' 
+e 0 caso contrário.
+
+Parâmetro: A função recebe um int c, que é o valor do caractere em código ASCII.
+Verificação:
+A condição (c >= '0' && c <= '9') verifica se c está no intervalo entre '0' e '9'.
+'0' e '9' são os caracteres ASCII que correspondem aos números 48 e 57, respectivamente.
+Retorno:
+Retorna 1 se o caractere for um dígito (entre '0' e '9').
+Retorna 0 caso contrário.
+
+
+ft_isalnum
+
+A função ft_isalnum verifica se um caractere é alfanumérico, ou seja, se é uma letra 
+(maiúscula ou minúscula) ou um dígito numérico (0-9). Ela deve retornar 1 (verdadeiro) 
+se o caractere for alfanumérico e 0 (falso) caso contrário.
+
+Implementação de ft_isalnum:
+A implementação de ft_isalnum pode ser feita usando as funções ft_isalpha e ft_isdigit, que 
+verificam se o caractere é uma letra ou um dígito.
+
+Uso de ft_isalpha e ft_isdigit:
+A função ft_isalnum verifica se c é uma letra usando ft_isalpha(c) ou um dígito usando ft_isdigit(c).
+Se qualquer uma dessas condições for verdadeira (1), ft_isalnum retorna 1.
+Caso contrário, retorna 0.
+Parâmetro:
+A função recebe um int c, que é o código ASCII do caractere a ser verificado.
+
+
+ft_isascii
+
+A função ft_isascii verifica se um caractere está no intervalo ASCII, que vai de 0 a 127. 
+Isso inclui todos os caracteres imprimíveis (letras, dígitos, símbolos) e os caracteres 
+de controle ASCII.
+
+Parâmetro: A função recebe um int c, que representa o código ASCII do caractere.
+Verificação:
+A condição (c >= 0 && c <= 127) verifica se c está no intervalo de 0 a 127, 
+que é o intervalo total dos códigos ASCII.
+Retorno:
+Retorna 1 se o valor estiver no intervalo ASCII.
+Retorna 0 caso contrário.
+
+Resumo:
+Implementação de ft_isascii: Verifica se um valor está no intervalo 0 a 127, 
+retornando 1 se estiver e 0 caso contrário.
+
+
+ft_isprint
+
+A função ft_isprint verifica se um caractere é imprimível, ou seja, se ele pertence 
+ao intervalo de caracteres que podem ser exibidos na tela. Em C, os caracteres imprimíveis 
+incluem os valores ASCII de 32 (espaço) até 126 (o til ~).
+
+Implementação de ft_isprint:
+A implementação da ft_isprint é simples, pois apenas verifica se o valor do caractere 
+está dentro do intervalo imprimível:
+
+Parâmetro: A função recebe um int c, que representa o código ASCII do caractere.
+Verificação:
+A condição (c >= 32 && c <= 126) verifica se c está no intervalo dos caracteres imprimíveis.
+32 corresponde ao caractere de espaço (' '), e 126 corresponde ao til ('~').
+Retorno:
+Retorna 1 se o valor estiver no intervalo dos caracteres imprimíveis.
+Retorna 0 caso contrário.
+
+Resumo:
+Implementação de ft_isprint: Verifica se um valor está no intervalo de 32 a 126, 
+retornando 1 se estiver e 0 caso contrário.
+
+
+ft_memset
+
+A função ft_memset preenche uma área de memória com um determinado valor. 
+Ela é uma função útil em C para inicializar blocos de memória, como ao criar 
+buffers ou inicializar arrays.
+
+Implementação de ft_memset:
+A função ft_memset deve preencher os n primeiros bytes da área de memória apontada 
+por s com o valor c (convertido para um unsigned char).
+
+Resumo:
+Implementação de ft_memset: Preenche uma área de memória com um valor c, 
+convertendo-o para unsigned char.
+
+ft_strdup
+
+A função ft_strdup deve criar uma cópia de uma string, alocando memória para a 
+nova string e copiando o conteúdo da original para ela. 
+
+A ft_strdup aloca memória suficiente para a nova string, copia o conteúdo da 
+string original e retorna um ponteiro para a cópia.
+O teste compara os resultados da ft_strdup para diferentes entradas, garantindo 
+que a função funcione corretamente em todos os casos.
+A free é usada para liberar a memória alocada pelas duplicatas, evitando vazamento de memória.
+
+
+ft_bzero
+
+A função ft_bzero é uma função em C que preenche os primeiros n bytes de uma 
+área de memória apontada por s com zeros ('\0'). A ft_bzero é frequentemente 
+usada para inicializar buffers, arrays e estruturas de dados, garantindo que 
+eles estejam em um estado "limpo" antes de serem usados.
+
+Parâmetros:
+void *s: Um ponteiro genérico para a área de memória que queremos limpar.
+size_t n: O número de bytes que queremos preencher com zero.
+Conversão para unsigned char *:
+Convertemos o ponteiro s para unsigned char * porque queremos manipular a 
+memória byte a byte. unsigned char é o tipo adequado para isso, pois representa 
+valores de 0 a 255.
+Laço for:
+Usamos um laço for para iterar pelos n primeiros bytes da memória e definimos 
+cada um como 0 (zero).
+Função void:
+A função ft_bzero não retorna nenhum valor, pois sua única função é alterar a área 
+de memória apontada por s.
+
+Resumo:
+Implementação de ft_bzero: Preenche os primeiros n bytes de uma área de memória com zeros (0x00).
+
+
+ft_memcpy
+
+A função ft_memcpy copia n bytes de uma área de memória para outra. Ela é útil para copiar 
+blocos de memória em C, como quando você precisa duplicar parte de um buffer ou copiar os 
+dados de um array para outro.
+
+Implementação de ft_memcpy:
+A função ft_memcpy deve copiar n bytes da área de memória apontada por src para a área 
+apontada por dest.
+
+Resumo:
+Implementação de ft_memcpy: Copia n bytes de src para dest de forma segura, 
+respeitando as áreas de memória.
+
+
+ft_split
+
+A função ft_split é usada para dividir uma string em substrings 
+com base em um delimitador específico. É semelhante à função 
+strtok da biblioteca padrão em alguns aspectos, mas ft_split 
+cria um array de strings (um vetor de char *) com todas as 
+partes da string original que são separadas pelo delimitador. 
+Essa função é útil quando você precisa quebrar uma string em 
+partes menores, como palavras ou elementos individuais.
+
+Comportamento de ft_split:
+Entrada:
+
+char const *s: A string a ser dividida.
+char c: O caractere delimitador que separa as substrings.
+Processo:
+
+A função ignora os delimitadores consecutivos.
+Divide a string s em substrings usando o delimitador c e armazena cada substring em um array.
+O array final é nulo-terminado (NULL) para indicar o fim do conjunto de strings.
+Saída:
+
+Retorna um array de ponteiros de char (char **), onde cada ponteiro aponta para uma substring.
+Retorna NULL se a alocação de memória falhar.
