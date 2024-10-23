@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../libft.h"  // Supondo que ft_split esteja declarada em libft.h
+#include "libft.h"  // Supondo que ft_split esteja declarada em libft.h
 
 int main(void) {
     char **result;
