@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:47:25 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/23 11:01:24 by eschula          ###   ########.fr       */
+/*   Created: 2024/10/23 11:19:08 by eschula           #+#    #+#             */
+/*   Updated: 2024/10/23 11:31:10 by eschula          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
-{
-	int	num;
-	int	sign;
-	int	i;
+#include "libft.h"
 
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	i;
+
+	if (!s || !f)
+		return ;
 	i = 0;
-	while ((str[i] >= 7 && str[i] <= 13) || str[i] == 32)
-		i++;
-	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
+	while (s[i])
 	{
-		if (str[i] == '-')
-		{
-			sign = (sign * -1);
-			i++;
-		}
-		else
-			i++;
-	}
-	num = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + str[i] - '0';
+		f(i, &s[i]);
 		i++;
 	}
-	return (num * sign);
 }
