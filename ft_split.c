@@ -6,7 +6,7 @@
 /*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:29:55 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/21 17:41:37 by eschula          ###   ########.fr       */
+/*   Updated: 2024/10/24 20:15:32 by eschula          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,22 @@ static size_t	word_count(const char *s, char c)
 	return (count);
 }
 
+static void	free_split(char **result, size_t j)
+{
+	while (j > 0)
+	{
+		free(result[j - 1]);
+		j--;
+	}
+	free(result);
+}
+
 static char	*word_dup(const char *s, size_t start, size_t end)
 {
 	char	*word;
 	size_t	i;
 
-	word = (char *)calloc((end - start +1), sizeof(char));
+	word = (char *)malloc((end - start + 1) * (sizeof(char)));
 	if (!word)
 		return (NULL);
 	i = 0;
@@ -48,31 +58,47 @@ static char	*word_dup(const char *s, size_t start, size_t end)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+static int	bcp_split(char const *src, char **dest, char c, int ind)
 {
-	char	**result;
 	size_t	i;
 	size_t	j;
 	size_t	start;
 
-	i = 0;
+	i = ind;
 	j = 0;
-	start = 0;
+	while (src[i] == c)
+		i++;
+	if (src[i] != '\0')
+	{
+		start = i;
+		while (src[i] && src[i] != c)
+			i++;
+		dest[j] = word_dup(src, start, i);
+		if (!dest[j])
+		{
+			free_split(dest, j);
+			return (0);
+		}
+		j++;
+	}
+	dest[j] = NULL;
+	return (i);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+	size_t	i;
+
+	i = 0;
 	if (!s)
 		return (NULL);
-	result = ft_calloc(word_count(s, c) + 1, sizeof(char *));
+	result = (char **)malloc((word_count(s, c) + 1) * (sizeof(char *)));
+	if (!result)
+		return (NULL);
 	while (s[i])
 	{
-		if (s[i] != c)
-		{
-			start = i;
-			while (s[i] && s[i] != c)
-				i++;
-			result[j++] = word_dup(s, start, i);
-		}
-		else
-			i++;
+		i = bcp_split(s, result, c, i);
 	}
-	result[j] = NULL;
 	return (result);
 }
