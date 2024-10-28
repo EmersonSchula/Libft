@@ -3,38 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: caide-so <caide-so@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:47:25 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/28 18:18:22 by eschula          ###   ########.fr       */
+/*   Created: 2024/10/14 20:48:52 by caide-so          #+#    #+#             */
+/*   Updated: 2024/10/25 18:55:39 by caide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+static int	ft_isspace(char c);
+
+int	ft_atoi(const char *nptr)
 {
-	int	num;
+	int	result;
 	int	sign;
 	int	i;
 
-	i = 0;
-	if (str[i] < 9 || str[i] > 126)
-		return (0);
-	while ((str[i] >= 7 && str[i] <= 13) || str[i] == 32)
-		i++;
+	result = 0;
 	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
+	i = 0;
+	while (ft_isspace(nptr[i]))
+		i++;
+	if (nptr[i] == '+' && nptr[i + 1] != '-')
+		i++;
+	if (nptr[i] == '-')
 	{
-		if (str[i] == '-')
-			sign = (sign * -1);
+		sign = -1;
 		i++;
 	}
-	num = 0;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		num = num * 10 + str[i] - '0';
+		result = (result * 10) + (nptr[i] - 48);
 		i++;
 	}
-	return (num * sign);
+	return (result * sign);
+}
+
+static int	ft_isspace(char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }

@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: caide-so <caide-so@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:39:01 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/28 18:40:30 by eschula          ###   ########.fr       */
+/*   Created: 2024/10/14 21:28:16 by caide-so          #+#    #+#             */
+/*   Updated: 2024/10/25 18:55:39 by caide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
+	void	*allocated;
 	size_t	total_size;
-	void	*ptr;
+	size_t	size_max;
+	size_t	i;
 
-	
-	if (count == 0 || size == 0)
-		total_size = 1;
-	else
-		total_size = count * size;
-	ptr = malloc(total_size);
-	if (!ptr)
-	{
+	size_max = ((size_t) ~(size_t) 0);
+	if (size != 0 && nmemb > size_max / size)
 		return (NULL);
+	total_size = nmemb * size;
+	allocated = malloc(total_size);
+	if (!allocated)
+		return (NULL);
+	i = 0;
+	while (i < total_size)
+	{
+		((unsigned char *)allocated)[i] = 0;
+		i++;
 	}
-	ft_bzero(ptr, total_size);
-	return (ptr);
+	return (allocated);
 }

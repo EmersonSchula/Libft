@@ -1,11 +1,20 @@
-# Nome da biblioteca
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: eschula <<marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/28 11:34:26 by eschula           #+#    #+#              #
+#    Updated: 2024/10/28 18:22:28 by eschula          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 
-# Compilador e flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-# Arquivos fontes e objetos
 SRC = ft_atoi.c \
 ft_bzero.c \
 ft_calloc.c \
@@ -41,30 +50,22 @@ ft_substr.c \
 ft_tolower.c \
 ft_toupper.c \
 
-# Adicione todos os arquivos .c necessários
 OBJ = $(SRC:.c=.o)
 
-# Regra principal: compilar tudo
 all: $(NAME)
 
-# Como criar a biblioteca
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-# Regra para compilar os arquivos .o a partir dos .c
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Limpeza dos arquivos objeto
 clean:
 	rm -f $(OBJ)
 
-# Limpeza completa (inclui a biblioteca)
 fclean: clean
 	rm -f $(NAME)
 
-# Recompilar do zero
 re: fclean all
 
-# Indica que não são arquivos reais
 .PHONY: all clean fclean re

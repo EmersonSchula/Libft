@@ -6,7 +6,7 @@
 /*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:52:52 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/25 16:43:41 by eschula          ###   ########.fr       */
+/*   Updated: 2024/10/25 19:10:05 by eschula          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	unsigned char	uc;
-	const char	*last_occurrence;
+	const char		*last_occurrence;
 
 	uc = (unsigned char)c;
 	last_occurrence = NULL;

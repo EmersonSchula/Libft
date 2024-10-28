@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: caide-so <caide-so@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:39:01 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/28 18:40:30 by eschula          ###   ########.fr       */
+/*   Created: 2024/10/18 19:25:38 by caide-so          #+#    #+#             */
+/*   Updated: 2024/10/25 18:55:40 by caide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	total_size;
-	void	*ptr;
+	unsigned int		i;
+	char				*tmp;
 
-	
-	if (count == 0 || size == 0)
-		total_size = 1;
-	else
-		total_size = count * size;
-	ptr = malloc(total_size);
-	if (!ptr)
-	{
+	tmp = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!tmp)
 		return (NULL);
+	i = 0;
+	while (i < ft_strlen(s))
+	{
+		tmp[i] = (*f)(i, s[i]);
+		i++;
 	}
-	ft_bzero(ptr, total_size);
-	return (ptr);
+	tmp[i] = '\0';
+	return (tmp);
 }
