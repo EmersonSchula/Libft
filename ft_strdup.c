@@ -6,13 +6,13 @@
 /*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:54:30 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/17 18:18:26 by eschula          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:00:03 by eschula          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+static char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
