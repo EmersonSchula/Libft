@@ -6,7 +6,7 @@
 /*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:39:01 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/28 18:40:30 by eschula          ###   ########.fr       */
+/*   Updated: 2024/10/29 11:58:51 by eschula          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	total_size;
 	void	*ptr;
 
-	
+	if (size != 0 && count > SIZE_MAX / size)
+		return (NULL);
 	if (count == 0 || size == 0)
 		total_size = 1;
 	else

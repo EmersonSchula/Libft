@@ -6,7 +6,7 @@
 /*   By: eschula <<marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:07:13 by eschula           #+#    #+#             */
-/*   Updated: 2024/10/28 18:21:54 by eschula          ###   ########.fr       */
+/*   Updated: 2024/10/29 12:01:15 by eschula          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stddef.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdint.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
